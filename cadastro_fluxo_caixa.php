@@ -1,40 +1,33 @@
 <?php 
 include("conexao.php");
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$fone = $_POST['fone'];
-$senha = $_POST['senha'];
-$sql = "SELECT email_usuario FROM usuario where email_usuario='$email'";
-$result = mysqli_query($con, $sql);
 
-if(mysqli_num_rows($result)>0) {
-    echo "<h3>Email já cadastrado</h3>";
-}
-else {
-    echo"<h1> Dados do Usuario</h1>";
-    echo "nome: $nome <br>";
-    echo "email: $email <br>";
-    echo "telefone: $fone <br>";
-    echo "senha: $senha <br>"; 
-}
+$data = $_POST['data'];
+$tipo = $_POST['tipo'];
+$valor = $_POST['valor'];
+$hist = $_POST['hist'];
+$cheque = $_POST['cheque'];
 
-if(mysqli_num_rows($result)>0) {
-    echo "<h3>E-mail já cadastrado</h3>";
-} else{
-echo "<h1>Dados do usuário</h1>";
-echo "Nome: $nome <br>";
-echo "E-mail: $email <br>";
-echo "Telefone: $fone <br>";
-echo "Senha: $senha <br>";
 
-$sql = "INSERT INTO usuario (nome_usuario,email_usuario,fone_usuario,senha_usuario)";
-$sql .= "VALUES ('".$nome."','".$email."','".$fone."','".$senha."')";
+echo "<h1>Dados do Usuário</h1>";
+echo "Data: $data <br>";
+echo "Tipo: $tipo <br>";
+echo "Valor: $valor <br>";
+echo "Histórico: $hist <br>";
+echo "Cheque: $cheque <br>";
+
+$sql = "INSERT INTO fluxo_caixa (data,tipo,valor,historico,cheque)";
+$sql .= "VALUES ('".$data."','".$tipo."','".$valor."','".$hist."','".$cheque."')";
+
+echo $sql;
 $result = mysqli_query($con, $sql);
 
 if($result){
-    echo "Dados cadastrados com sucesso";}
-else{
-    echo "Erro ao tentar cadastrar!";}
+    echo "Dados cadastrados!!";
 }
+
+    else{
+        echo "ERRO!";  
+    }
+
+echo "<br><a href='index.php'>Back</a>";
 ?>
-<a href="index.php">Voltar</a>

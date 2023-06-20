@@ -4,30 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadasro do Fluxo</title>
 </head>
 <body>
-    <h1>Cadastro de Usuários - IFSP</h1>
-    <form action="cadastro_usuario.php" method="post">
+
+    <h1>Cadastro de fluxo de caixas</h1> 
+    <form action="cadastro_fluxo_caixa.php" method="post">
+        <!-- Data -->
         <div>
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome">
+            <label for="data">Data: </label>
+            <input type="date" name="data" id="data">
         </div>
+        <!-- Opção check -->
         <div>
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email">
+            <label for="tipo">Tipo: </label>
+            <input type="radio" name="tipo" value="entrada" id="tipo" checked>
+            <label for="tipo">Entrada</label>
+            <input type="radio" name="tipo" value="saida" id="tipo">
+            <label for="tipo">Saida</label>
         </div>
+
         <div>
-            <label for="fone">Telefone</label>         
-            <input type="tel" name="fone" id="fone" pattern="\([0-9]{2}\)([9]{1})?[0-9]{4}-[0-9]{4}"
-            placeholder="Formato(18)99999-8888">
+            <label for="valor">Valor: </label>
+            <input type="number" name="valor" id="valor" step=".01">
         </div>
+
         <div>
-            <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha">
+            <label for="hist">Histórico: </label>
+            <input type="text" name="hist" id="hist">
         </div>
+
+        <!-- Opção check -->
+        <div>
+            <label for="cheque">Cheque: </label>
+            <select name="cheque">
+                <option value="sim" selected>Sim</option>
+                <option value="nao">Não</option>
+            </select>
+  
+        </div>
+        
         <input type="submit" value="Salvar">
     </form>
-    <a href="index.php">Voltar</a>
+
+    <a href="index.php">Back</a>
 </body>
 </html>
